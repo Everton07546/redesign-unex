@@ -1,27 +1,29 @@
 {
-    "services": {
-        "frontend": {
-            "root": ".",
-            "framework": "vite"
-        },
-        "backend": {
-            "root": "backend"
-        }
-    },
-    "rewrites": [
-        {
-            "source": "/api(/.*)?",
-            "destination": {
-                "type": "service",
-                "service": "backend"
-            }
-        },
-        {
-            "source": "/(.*)",
-            "destination": {
-                "type": "service",
-                "service": "frontend"
-            }
-        }
-    ]
+"$schema": "https://openapi.vercel.sh/vercel.json",
+"services": {
+"frontend": {
+"root": ".",
+"framework": "vite"
+},
+"backend": {
+"root": "backend",
+"entrypoint": "server.js"
+}
+},
+"rewrites": [
+{
+"source": "/api(/.)?",
+"destination": {
+"type": "service",
+"service": "backend"
+}
+},
+{
+"source": "/(.)",
+"destination": {
+"type": "service",
+"service": "frontend"
+}
+}
+]
 }
